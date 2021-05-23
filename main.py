@@ -629,8 +629,8 @@ class MicrographBigGAN(pl.LightningModule):
 
 
 
-ROOT_DIR = '../input/highcarbon-micrographs/For Training/Cropped'
-DF_DIR = '../input/highcarbon-micrographs/new_metadata.xlsx'
+ROOT_DIR = 'imgs/micrographs'
+DF_DIR = 'meta/uhcs-metadata.xlsx'
 
 gan = MicrographBigGAN(ROOT_DIR, DF_DIR, batch_size=12)
 
