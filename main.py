@@ -20,8 +20,11 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from torchvision.utils import make_grid
 import warnings
+
 warnings.filterwarnings("ignore")
-#from torchsummaryX import summary
+
+
+# from torchsummaryX import summary
 
 
 class ClassConditionalBN(nn.Module):
@@ -472,7 +475,7 @@ class MicrographDataset(Dataset):
         cooling_dict = {'Q': 0, 'FC': 1, 'AR': 2, '650-1H': 3}
         row = self.df.loc[idx]
         img_name = row['path']
-        img_path = self.root_dir + '/' + 'Cropped' + img_name
+        img_path = self.root_dir + img_name
         anneal_temp = temp_dict[row['anneal_temperature']]
         if row['anneal_time_unit'] == 'H':
             anneal_time = int(row['anneal_time']) * 60
@@ -628,9 +631,8 @@ class MicrographBigGAN(pl.LightningModule):
                           batch_size=self.batch_size, shuffle=False)
 
 
-
-ROOT_DIR = 'imgs/micrographs'
-DF_DIR = 'meta/uhcs-metadata.xlsx'
+ROOT_DIR = 'imgs/micrographs/'
+DF_DIR = 'meta/micro_metadata_6.xlsx'
 
 gan = MicrographBigGAN(ROOT_DIR, DF_DIR, batch_size=12)
 
@@ -641,3 +643,4 @@ trainer.fit(gan)
 trainer.save_checkpoint("MicroGAN_checkpoint.ckpt")
 
 torch.save(gan.generator.state_dict(), 'BigGAN-deep.pth')
+print("OK OK OK")

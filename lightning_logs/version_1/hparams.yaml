@@ -1,0 +1,8 @@
+augment_bool: true
+batch_size: 12
+df_dir: meta/uhcs-metadata.xlsx
+lr: 0.0002
+n_classes_cool: 4
+n_classes_temp: 7
+n_classes_time: 8
+root_dir: imgs/micrographs
